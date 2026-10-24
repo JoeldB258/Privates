@@ -3,6 +3,11 @@
     "rea": {
       "command": "npx",
       "args": ["-y", "rea-agents@6.7.0", "mcp"]
+    },
+    "search-console": {
+      "command": "go",
+      "args": ["run", "github.com/ncosentino/google-search-console-mcp/go@v0.0.0-20260805044428-83d0aa286319"],
+      "env": { "GOTOOLCHAIN": "auto" }
     }
   }
 }
