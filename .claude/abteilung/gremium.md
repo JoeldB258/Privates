@@ -28,6 +28,8 @@ Die Abteilungsleitung wählt pro Auftrag **4 bis 7 passende Sitze** (Kosten und 
 - **9,0 oder mehr nur, wenn kein Muss-Punkt offen ist.**
 - Rückmeldung getrennt in **Muss** (blockiert 9,0) und **Kann** (Verbesserung).
 - Faktenfehler, Verstösse gegen die ZT-Schreibregeln oder Befugnisse sind immer Muss-Punkte.
+- Offene Angaben, die nur Dritte klären können (z.B. Gemeinde), sind **Prozessrisiko, kein Muss-Punkt**, wenn sie im Entwurf als nummerierte Blocker gelistet sind und der Text ohne sie korrekt und nützlich bleibt. Jede [prüfen]-Stelle braucht eine Blocker-Nummer.
+- Die Abteilungsleitung prüft bei Sitzen, die schon 9,0 haben, selbst per Vergleich der Fassungen, dass nichts schlechter wurde (spart Agentenläufe).
 
 ## Ablauf
 
