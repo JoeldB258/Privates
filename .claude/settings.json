@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "ask": [
+      "mcp__Microsoft_365__outlook_send_mail",
+      "mcp__Microsoft_365__outlook_send_draft",
+      "mcp__Microsoft_365__outlook_forward_mail",
+      "mcp__Microsoft_365__teams_send_chat_message",
+      "mcp__Microsoft_365__teams_send_channel_message",
+      "mcp__Microsoft_365__teams_reply_channel_message",
+      "mcp__Gmail__send_message",
+      "mcp__Gmail__reply",
+      "mcp__Gmail__forward",
+      "mcp__Asana__delete_task",
+      "mcp__Asana__update_tasks"
+    ],
+    "deny": [
+      "mcp__Microsoft_365__outlook_batch_delete_messages",
+      "mcp__Microsoft_365__outlook_trash_thread",
+      "mcp__Gmail__trash_message",
+      "mcp__Gmail__trash_thread"
+    ]
+  }
+}
