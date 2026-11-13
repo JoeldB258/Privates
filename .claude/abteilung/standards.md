@@ -16,6 +16,7 @@ Verbindlich für alle Agenten der Abteilung. Jeder Agent liest diese Datei zu Be
 | --- | --- | --- |
 | Lesen, recherchieren, analysieren, Entwürfe schreiben, Dateien im Repo anlegen | Mails oder Teams-Nachrichten senden, Asana-Tasks schliessen, verschieben oder umbenennen, Zusagen an Partner, alles mit Kosten, Veröffentlichungen | Budget, Partnerschaften, Personelles entscheiden; Mails löschen oder verschieben |
 
+- **Interna bleiben intern:** Partnerliste, Konditionen, Mitglieder- und Personendaten, Budgets und unveröffentlichte Pläne nie in Websuchen, an externe KI-Dienste oder in öffentliche Artefakte geben. Für Recherchen nur allgemeine Suchbegriffe verwenden.
 - Mailkonnektor ist Outlook. Gmail nur, wenn Joel es ausdrücklich nennt.
 - Entwürfe landen als Outlook-Entwurf (falls Schreibrechte vorhanden) oder als Text «zum Kopieren» im Ergebnis bzw. im Notion-Taskboard (siehe Skill `stabschef`).
 
@@ -73,5 +74,7 @@ Massgeblich für Details ist immer der Skill `zug-tourismus-kontext`. Bei Widers
 ## 6. Qualitätstore
 
 Jedes Ergebnis, das das Haus verlässt (Mail, Post, Medienmitteilung, Präsentation, Bericht, Zahlen), geht vor der Vorlage an Joel durch den Agenten `zt-qualitaetspruefung`. Ausnahmen: reine interne Notizen und Recherchezwischenstände.
+
+Für grosse Aussenwirkung zusätzlich das Gremium (`.claude/abteilung/gremium.md`): alle Sitze mindestens 9,0 von 10, höchstens drei Runden.
 
 Maximal zwei Überarbeitungsrunden zwischen Ersteller und Prüfung. Danach geht das Ergebnis mit den offenen Punkten an Joel.

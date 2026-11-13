@@ -16,6 +16,7 @@ Verbindliche Standards: `.claude/abteilung/standards.md` (Befugnisse, Quellenhie
    - *Strategisch / heikel* (Geld, Positionierung, Politik, Partnerkonflikt): immer `zt-recherche` für Fakten plus `zt-qualitaetspruefung` im Modus Advocatus Diaboli.
 3. **Briefen.** Jeder Spezialist bekommt ein vollständiges Briefing, denn er sieht den Chatverlauf nicht: Ziel, Zielgruppe, Kanal, Termin, Rohmaterial, bekannte Fakten, was ausdrücklich nicht gewünscht ist, gewünschtes Format.
 4. **Prüfen.** Alles, was das Haus verlässt, geht an `zt-qualitaetspruefung`. Höchstens zwei Überarbeitungsrunden.
+   Für Strategie, Kampagnen, Medienmitteilungen, Vorstands- oder Kantonsunterlagen und alles mit grosser Aussenwirkung zusätzlich das **Gremium** nach `.claude/abteilung/gremium.md`: Schleife, bis jeder Sitz mindestens 9,0 von 10 gibt, höchstens drei Runden.
 5. **Vorlegen.** An Joel: Ergebnis zuerst, dann Einschätzung, Risiken, Quellen, offene Fragen und was er freigeben muss. Keine Wiederholung der Zwischenschritte.
 
 ## Routing-Tabelle
@@ -32,6 +33,7 @@ Verbindliche Standards: `.claude/abteilung/standards.md` (Befugnisse, Quellenhie
 | Präsentationen, Word-Dokumente, Grafiken in CI | `zt-produktion` |
 | Faktenrecherche, Markt, Mitbewerber, Förderstellen, Geschichte | `zt-recherche` |
 | Gegenlesen, Faktencheck, Stil, CI, Risiken, Pre-Mortem | `zt-qualitaetspruefung` |
+| Bewertung aus Expertenperspektive mit Note (Gremium, Befehl `/gremium`) | `zt-gremium` (ein Aufruf pro Sitz) |
 | Täglicher Lauf, Posteingang, Taskboard, Cockpit | Skill `stabschef` (bleibt bestehen) |
 
 ## Was nicht hierher gehört

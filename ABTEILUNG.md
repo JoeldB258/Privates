@@ -16,6 +16,8 @@ Eine Agenten-Abteilung für Joels Arbeit bei Zug Tourismus: eine Abteilungsleitu
      · Digital & Web      · Produktion         · Recherche
                                      │
                     Qualitätsprüfung (unabhängig, Pflicht vor Versand)
+                                     │
+        Gremium (4 bis 7 Expertensitze, Schleife bis alle mindestens 9,0/10)
 
  Täglicher Lauf (Posteingang, Taskboard, Cockpit): bestehender Skill «stabschef»
 ```
@@ -45,6 +47,10 @@ Im Repo `Privates` eine Claude-Code-Session starten (lokal oder auf claude.ai/co
 /gegencheck <Text oder Entscheid>
 ```
 
+```
+/gremium Medienmitteilung Clean-Up Day 2027
+```
+
 Einen einzelnen Agenten direkt ansprechen: «Lass zt-medien-pr eine Medienmitteilung zum Pumptrack Neuheim schreiben.»
 
 ## Warum so gebaut: übernommene Prinzipien
@@ -58,6 +64,8 @@ Einen einzelnen Agenten direkt ansprechen: «Lass zt-medien-pr eine Medienmittei
 | Spezialisierte Subagenten mit eigener Beschreibung, eigenem Prompt und eigenen Werkzeugen; Subagenten starten keine weiteren Subagenten | Claude Code Dokumentation, Subagents (code.claude.com/docs) | Zehn Dateien in `.claude/agents/`, Koordination nur in der Hauptsession |
 | Guardrails und klare Übergaben zwischen Agenten, Mensch entscheidet bei heiklen Aktionen | OpenAI, «A practical guide to building agents», 2025 | Befugnistabelle in den Standards, Rückfrage-Regeln in `.claude/settings.json`, einheitliches Übergabeformat |
 | Rolle, Ziel und Hintergrund pro Agent | CrewAI Dokumentation (role, goal, backstory) | Jeder Agent beginnt mit Rolle und Haltung |
+
+| Gremium aus Expertenperspektiven mit Prüfschleife bis mindestens 9,0 von 10 | KI TALK Folge 159, Maxi Raabe und Niklas Volland, 10.11.2026 (Kurzbeschreibung der KI TALK Notes) | `.claude/abteilung/gremium.md`, Agent `zt-gremium`, Befehl `/gremium` |
 
 **Aus den Fachframeworks**
 
@@ -80,6 +88,8 @@ Einen einzelnen Agenten direkt ansprechen: «Lass zt-medien-pr eine Medienmittei
 - **Kosten und Tempo:** Mehrere Agenten parallel brauchen deutlich mehr Rechenaufwand als ein einzelner Chat (Anthropic nennt für Multi-Agent-Recherche rund 15-mal mehr Tokens als ein normaler Chat). Für kleine Aufgaben darum lieber direkt einen Agenten oder den passenden Skill nehmen.
 - **Doppelte Wahrheit vermeiden:** Fachwissen (Preise, Partner, Regeln) gehört in die Skills, nicht in die Agenten. Ändert sich etwas, nur den Skill anpassen.
 - **Abhängigkeit von Skills:** Die Agenten laden deine Claude.ai-Skills. Läuft eine Session ohne diese Skills, arbeiten die Agenten mit den Standards weiter, aber ohne Detailwissen. Das melden sie dann.
+- **Noteninflation:** KI-Bewertungen neigen zu wohlwollenden Noten. Darum bewerten die Sitze unabhängig, jeder Abzug braucht eine Begründung und 9,0 gibt es nur ohne offene Muss-Punkte. Eine 9,0 ist trotzdem kein Ersatz für deinen Blick.
+- **Gremium kostet:** 7 Sitze mal 3 Runden sind bis zu 21 Agentenläufe. Darum nur für grosse Aussenwirkung.
 - **Keine Garantie für Fakten:** Die Qualitätsprüfung senkt das Fehlerrisiko, ersetzt aber nicht deinen Blick vor dem Versand.
 
 ## Pflege
