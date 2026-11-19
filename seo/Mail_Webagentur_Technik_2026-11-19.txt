@@ -1,0 +1,60 @@
+Betreff: zug-tourismus.ch: technische Punkte aus dem SEO-Check (404, Canonical, strukturierte Daten)
+
+Hallo zusammen
+
+Wir haben die Website zug-tourismus.ch am 19. November 2026 vollständig geprüft (alle 4'537 Adressen der Sitemap). Dabei sind einige technische Punkte aufgefallen, die wir gerne mit euch angehen möchten. Die Liste ist nach Dringlichkeit geordnet.
+
+1. Seiten mit Besuchen, die 404 melden (dringend)
+Diese Adressen werden noch aufgerufen, zeigen aber eine Fehlerseite. Bitte 301-Weiterleitungen einrichten:
+- /de/events/zuger-messe-2026/ (75 Aufrufe in einer Woche) auf die aktuelle Zuger-Messe-Seite oder /de/veranstaltungen/
+- /de/poi/christkindlimaert-auf-dem-pilatus/ auf /de/weihnachtsmaerkte/
+- /de/winter/ auf /de/winter-in-zug/
+- /de/llms.txt meldet 404, nachdem /llms.txt dorthin umleitet. Die Umleitung von Dateien im Wurzelverzeichnis auf /de/ sollte nicht greifen.
+Gibt es bei euch eine Liste aller 404-Aufrufe der letzten Monate? Dann würden wir die weiteren Weiterleitungen gemeinsam festlegen.
+
+2. Canonical-Tag zeigt auf eine weitergeleitete Adresse (betrifft 3'866 Seiten)
+Der Canonical-Tag nennt die Adresse ohne Schrägstrich am Ende, zum Beispiel https://www.zug-tourismus.ch/de/1-august-feiern. Diese Adresse leitet mit 308 auf /de/1-august-feiern/ weiter. Sitemap und hreflang verwenden die Fassung mit Schrägstrich. Bitte den Canonical-Tag in der Vorlage auf die endgültige Adresse mit Schrägstrich setzen, damit Canonical, hreflang und Sitemap übereinstimmen.
+Zusätzlich gibt das Metatag-Feld im Backend (JSON:API) Canonicals wie https://www.zug-tourismus.ch//spielplaetzesteinhausen aus, mit doppeltem Schrägstrich und ohne Sprachpfad. Falls das Frontend diesen Wert irgendwo übernimmt, bitte ebenfalls korrigieren.
+
+3. Doppelte Seiten
+- /de/home/ ist eine zweite Startseite mit Status 200. Bitte per 301 auf /de/ weiterleiten (auch /en/home/ und /fr/home/, falls vorhanden).
+- Die Wanderseite ist unter /de/wanderungen-spaziergänge/ und /de/wanderungen-spaziergaenge/ erreichbar. Bitte eine Adresse festlegen (ohne Umlaut) und die andere per 301 weiterleiten.
+- /de/event-calendar/ und /de/veranstaltungen/ konkurrieren um dieselben Suchanfragen. /de/event-calendar/ hat keine H1 und als Metabeschrieb nur «Zug Tourismus». Wir möchten /de/veranstaltungen/ als Hauptseite. Bitte prüfen, ob /de/event-calendar/ per Canonical auf /de/veranstaltungen/ verweisen kann. Dasselbe gilt für /de/events/top-events/.
+
+4. Subdomain frontend.zug-tourismus.ch
+Die Subdomain war im Oktober im Google-Index sichtbar und antwortet heute mit 404. Bitte per 301 auf die gleiche Adresse unter www.zug-tourismus.ch weiterleiten oder mit Passwort schützen.
+
+5. Strukturierte Daten (JSON-LD) fehlen auf allen Seiten
+Keine Seite enthält strukturierte Daten. Für Google (Veranstaltungsergebnisse) und für KI-Suchen ist das inzwischen wichtig. Die Angaben liegen im CMS bereits als Felder vor. Wir würden gerne folgende Typen ausgeben:
+- Event für Veranstaltungen (Name, Datum, Zeit, Ort, Preis)
+- TouristAttraction bzw. LocalBusiness für POI-Seiten (Adresse, Öffnungszeiten, Koordinaten)
+- TouristInformationCenter für die Tourist Information (Öffnungszeiten, Kontakt)
+- Organization für Zug Tourismus
+- FAQPage für Seiten mit FAQ-Block
+- BreadcrumbList für alle Seiten
+Könnt ihr uns dafür eine Offerte machen?
+
+6. hreflang ohne x-default
+de, en und fr sind hinterlegt, x-default fehlt. Bitte x-default auf die deutsche Fassung setzen.
+
+7. HTML-Code in Metabeschrieben
+In 223 Metabeschrieben steht «&nbsp;» als sichtbarer Text, in 48 «&amp;». Bitte das Feld Metabeschrieb als reinen Text speichern und die bestehenden Einträge bereinigen.
+
+8. Bausteine mit eigener Adresse in der Sitemap
+Rund 30 POI-Einträge sind Bausteine anderer Seiten (z.B. Schritte der Fairtiq-Anleitung, Brunnen-Einträge ohne Text, Feedback, Systemseiten wie die Newsletter-Bestätigung). Sie stehen mit eigener Adresse in der Sitemap. Gibt es im CMS eine Möglichkeit, solche Einträge auf noindex zu setzen und aus der Sitemap zu nehmen? Die Liste schicken wir gerne separat.
+
+9. Übersetzung
+Auf rund 30 englischen Seiten stehen deutsche Abschnitte (z.B. /en/hands-on-art/, Spielplatzseiten). Vermutlich werden einzelne Felder nicht an die Übersetzung übergeben. Könnt ihr prüfen, welche?
+
+10. Zugang für Metabeschriebe
+Wir möchten auf 112 Seiten fehlende Metabeschriebe nachtragen. Gibt es die Möglichkeit eines Massenimports (z.B. CSV mit Node-ID und Text) oder eines technischen Zugangs mit Berechtigung nur für Meta-Tags? Sonst tragen wir die Texte von Hand ein.
+
+Gerne bespreche ich die Punkte auch in einem kurzen Call. Die vollständige Auswertung lege ich bei.
+
+Herzliche Grüsse
+
+Joel de Buren
+Leiter Marketing
+Zug Tourismus
+Bahnhofplatz, 6300 Zug
++41 41 511 75 00
