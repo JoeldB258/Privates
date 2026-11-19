@@ -1,0 +1,192 @@
+Winter-Update zug-tourismus.ch, Stand 19.11.2026
+Fertige Texte zum Einfügen im CMS. Status: bestätigt = Datum beim Veranstalter geprüft.
+
+=== Kerzenziehen in Zug (Node 7750) · teilweise bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/7750/edit
+Live: https://www.zug-tourismus.ch/de/poi/kerzenziehen-zug/
+Bisher: Daten 2025: Oberägeri 11.–16.11., Hünenberg 17.–19.11., Rotkreuz 19.–26.11., Menzingen 28.11.–3.12., Freiruum 14./15.12.2025
+Neuer Text:
+Der Duft von warmem Wachs, leuchtende Farben und kreative Momente: Das Kerzenziehen ist ein stimmungsvoller Auftakt in die Adventszeit. In der Region Zug gestalten Gross und Klein eigene Kerzen. Je nach Veranstalter ist eine Anmeldung nötig, die Preise variieren.
+
+Zug, Wintermarkt im Freiruum: Samstag, 5. Dezember 2026, bis 19:00 Uhr, und Sonntag, 6. Dezember 2026, bis 18:00 Uhr, in der Genusshalle, CHF 5.
+Metabeschrieb (931 px): Kerzen selber ziehen in der Adventszeit: Kerzenziehen im Kanton Zug, unter anderem am Wintermarkt im Freiruum Zug am 5. und 6. Dezember 2026.
+Offen: Oberägeri (Jufrii), Hünenberg und Rotkreuz: Daten 2026 auf den Veranstalterseiten nicht publiziert, Oberägeri war 2025 Mitte November und ist vermutlich vorbei. Menzingen: Frauen Menzingen nennen «26. November bis 1. Dezember 2027», das passt zum Wochentagsmuster (Freitag bis Mittwoch); ob 2026 ein Kerzenziehen stattfindet, telefonisch klären. Bis dahin nur den Freiruum aufführen.
+Quelle: freiruum.ch/events/wintermarkt2026; frauenmenzingen.ch/kerzenziehen
+
+=== Laternenweg Raten (Node 7932) · offen
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/7932/edit
+Live: https://www.zug-tourismus.ch/de/poi/touren/laternenweg-raten/
+Bisher: «Das Datum 2026 steht noch nicht fest.»
+Neuer Text:
+Auf dem Raten markieren 35 Laternen mit Zitaten und Weisheiten einen rund einen Kilometer langen Weg in Richtung Gottschalkenberg. Der Laternenweg lädt vom Jahresende bis in den Januar zu einem ruhigen Winterspaziergang ein, hin und zurück durch die verschneite Landschaft. Die Laternen werden jeweils vor dem Eindunkeln angezündet, ausser bei stürmischem Wetter.
+
+Daten 2026/27: [beim Betreiber erfragen und eintragen]
+Metabeschrieb (965 px): 35 Laternen mit Zitaten säumen auf dem Raten einen Winterweg Richtung Gottschalkenberg: ein ruhiger Abendspaziergang vom Jahresende bis im Januar.
+Offen: Daten 2026/27 nirgends publiziert. Betreiber über laternenweg-raten.net kontaktieren. Bis dahin den Satz «Das Datum 2026 steht noch nicht fest» durch «Die Daten für den Winter 2026/27 folgen» ersetzen.
+Quelle: laternenweg-raten.net (Seite ohne lesbare Daten)
+
+=== Stuckli Ballonfiesta (Node 8071) · offen
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/8071/edit
+Live: https://www.zug-tourismus.ch/de/poi/stuckli-ballonfiesta/
+Bisher: 10. Januar 2026, Ersatzdaten 21./28. Februar 2026
+Neuer Text:
+Seite bis zur Bekanntgabe des Datums 2027 unpublizieren. Die Ausgabe 2026 wurde am 10. Januar und am 21. Februar wetterbedingt abgesagt.
+Offen: Datum 2027 bei Sattel-Hochstuckli erfragen.
+Quelle: sattel-hochstuckli.ch News (Absagen 2026); kein Datum 2027 publiziert
+
+=== Lichterschiff Zugersee (Node 8229) · bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/8229/edit
+Live: https://www.zug-tourismus.ch/de/events/lichterschiff-zugersee/
+Bisher: Fahrten 19.11., 26.11., 11.12., 18.12.2026 (korrekt)
+Neuer Text:
+Lichterfahrten auf dem Zugersee 2026: Donnerstag, 26. November, Freitag, 11. Dezember, und Freitag, 18. Dezember (ausgebucht), jeweils 19:00 Uhr ab Zug Bahnhofsteg, Ankunft 21:30 Uhr Zug Schützenmatt. Rundfahrt CHF 36, mit Halbtax oder GA CHF 33, Kinder von 6 bis 16 Jahren CHF 18, Kinder unter 6 Jahren gratis.
+Metabeschrieb (789 px): Winterfahrten mit der MS Rigi auf dem Zugersee: ein Schiff voller funkelnder Lichter für einen ruhigen Abend in der Adventszeit.
+Offen: Doppelte Seite /de/poi/gaststaette/lichterschiff/ (Node 3786) per Canonical auf diese Seite verweisen. Fahrt vom 19.11. nach heute entfernen.
+Quelle: zugersee-schifffahrt.ch, Erlebnis Lichterschiff (Stand 19.11.2026)
+
+=== Umzug Zuger Chesslete (Node 6193) · teilweise bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6193/edit
+Live: https://www.zug-tourismus.ch/de/poi/umzug/umzug-zuger-chesslete/
+Bisher: 12. Februar 2026, 14:30 Uhr
+Neuer Text:
+Der Schülerumzug der 49. Zuger Chesslete findet am Schmutzigen Donnerstag, 4. Februar 2027, statt. Er führt vom Kolinplatz zum Bundesplatz, wo zum Abschluss eine Konfettischlacht wartet. Startzeit gemäss Programm der Zuger Chesslete.
+Metabeschrieb (854 px): Schülerumzug der Zuger Chesslete am Schmudo, 4. Februar 2027, vom Kolinplatz zum Bundesplatz, mit Konfettischlacht zum Abschluss.
+Offen: Startzeit Schülerumzug (2026: 14:30 Uhr) noch nicht publiziert.
+Quelle: zugerchesslete.ch: «49. Zuger Chesslete 2027, 04. Februar 2027, Infos folgen»
+
+=== Faschall Umzug Allenwinden (Node 8250) · bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/8250/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/faschall-umzug-allenwinden/
+Bisher: 14. Februar 2026
+Neuer Text:
+Am Fasnachtssamstag, 6. Februar 2027, um 13:30 Uhr zieht der Faschall Umzug durch Allenwinden, mit anschliessender Kinderbescherung. Bunte Kostüme, Musik und fröhliche Stimmung machen ihn zu einem Fasnachtserlebnis für die ganze Familie. Am Abend folgt um 20:00 Uhr der Faschall-Ball in der Aula Allenwinden.
+Metabeschrieb (888 px): Faschall Umzug am Fasnachtssamstag, 6. Februar 2027, um 13:30 Uhr durch Allenwinden, mit Kinderbescherung und Faschall-Ball am Abend.
+Quelle: faschall.ch Jahresprogramm; raebefasnacht.ch Programm 2027
+
+=== Umzug Räbefasnacht Baar (Node 6194) · bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6194/edit
+Live: https://www.zug-tourismus.ch/de/poi/umzug/umzug-raebefasnacht-baar/
+Bisher: 15. Februar 2026, 14:30 Uhr
+Neuer Text:
+Der grosse Fasnachtsumzug am Fasnachtssonntag, 7. Februar 2027, startet um 14:30 Uhr und ist mit über 50 Nummern der Höhepunkt der Baarer Räbefasnacht. Route: Büelplatz, Marktgasse, Kreuzplatz, Neugasse, Bahnhof, Bahnhofstrasse, Dorfstrasse, Rathausplatz.
+Metabeschrieb (826 px): Grosser Umzug am Fasnachtssonntag, 7. Februar 2027, um 14:30 Uhr in Baar: über 50 Nummern, der Höhepunkt der Räbefasnacht.
+Offen: Route am Ende gegen Programm prüfen (Text im Programm abgeschnitten nach «Ratha…»).
+Quelle: raebefasnacht.ch/fasnacht-baar/fasnachtsprogramm
+
+=== Kinderumzug Baar (Node 6195) · bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6195/edit
+Live: https://www.zug-tourismus.ch/de/poi/umzug/kinderumzug-baar/
+Bisher: 16. Februar 2026, 14:30 Uhr
+Neuer Text:
+Der Kinderumzug findet am Fasnachtsmontag, 8. Februar 2027, um 14:30 Uhr im Dorfzentrum Baar statt. Weil der Fasnachtsmontag 2027 in die Sportferien fällt, organisiert die Fasnachtsgesellschaft Baar den Umzug. Alle Kinder, die einmal an einem Fasnachtsumzug mitlaufen möchten, können sich anmelden.
+Metabeschrieb (856 px): Kinderumzug am Fasnachtsmontag, 8. Februar 2027, um 14:30 Uhr im Dorfzentrum Baar, organisiert von der Fasnachtsgesellschaft Baar.
+Quelle: raebefasnacht.ch Programm 2027
+
+=== Räbefasnacht Baar: Verbrennung des Räbechüng (Node 6267) · bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6267/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/raebefasnacht-baar-verbrennung-des-raebechueng/
+Bisher: 17. Februar 2026, 19:45 Uhr
+Neuer Text:
+Am Fasnachtsdienstag, 9. Februar 2027, endet die Baarer Räbefasnacht mit dem Schlussakt auf dem Rathausplatz: Um 19:45 Uhr startet der Fackelzug durch das Dorfzentrum, um 20:00 Uhr wird der Räbechüng zu Guggenklängen verbrannt.
+Metabeschrieb (955 px): Schlussakt der Räbefasnacht am 9. Februar 2027: Fackelzug um 19:45 Uhr und Verbrennung des Räbechüngs um 20:00 Uhr auf dem Rathausplatz Baar.
+Quelle: raebefasnacht.ch Programm 2027
+
+=== Umzug Eiche-Fasnacht Hünenberg (Node 6269) · teilweise bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6269/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/umzug-eiche-fasnacht-huenenberg/
+Bisher: 17. Februar 2026, 14:30 Uhr
+Neuer Text:
+Am Fasnachtsdienstag, 9. Februar 2027, zieht der bunte Fasnachtsumzug der Eiche Zunft durch die Strassen von Hünenberg. Anschliessend folgen ein Monsterkonzert und die Verbrennung des Eichefrässers.
+Metabeschrieb (801 px): Fasnachtsumzug der Eiche Zunft am 9. Februar 2027 durch Hünenberg, mit Monsterkonzert und Verbrennung des Eichefrässers.
+Offen: Startzeit 2027 nicht publiziert (2026: 14:30 Uhr).
+Quelle: eichezunft.ch
+
+=== Umzug Legorenfasnacht Oberägeri (Node 6271) · bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6271/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/umzug-legorenfasnacht-oberaegeri/
+Bisher: 17. Februar 2026, 13:15 Uhr
+Neuer Text:
+Am Güdeldienstag, 9. Februar 2027, startet der Grosse Umzug der Legorenfasnacht pünktlich um 13:15 Uhr beim Gasthaus Hirschen und zieht der Hauptstrasse entlang durch Oberägeri.
+Metabeschrieb (775 px): Grosser Umzug der Legorenfasnacht am Güdeldienstag, 9. Februar 2027, um 13:15 Uhr ab Gasthaus Hirschen in Oberägeri.
+Quelle: legor.ch/umzug (Güdelzischtig, 13:15 Uhr; Datum aus Fasnachtskalender 2027)
+
+=== Umzug Wylägerer Fasnacht Unterägeri (Node 6278) · bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6278/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/umzug-wylaegerer-fasnacht-unteraegeri/
+Bisher: Sonntag, 15. Februar, 13:45 Uhr, 63. Umzug
+Neuer Text:
+Am Sonntag, 7. Februar 2027, beginnt um 13:45 Uhr der 64. Wylägerer Fasnachtsumzug in Unterägeri, anschliessend Bühnenspiel auf dem Dorfplatz. Bereits am Schmutzigen Donnerstag, 4. Februar 2027, startet um 14:00 Uhr der Kinderumzug mit anschliessender Kinderfasnacht in der Ägerihalle.
+Metabeschrieb (765 px): 64. Wylägerer Fasnachtsumzug am 7. Februar 2027 um 13:45 Uhr in Unterägeri, Kinderumzug am Schmudo um 14:00 Uhr.
+Quelle: wylaegeri.ch Programm
+
+=== Fasnacht in Zug (Übersicht) (Node 2036) · teilweise bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/2036/edit
+Live: https://www.zug-tourismus.ch/de/fasnacht/
+Bisher: Tagestitel und Einträge mit Daten 2026, Abschnitt «Fasnacht 2026: Abgesagte und pausierende Anlässe»
+Neuer Text:
+Tagestitel ersetzen: Schmutziger Donnerstag, 4. Februar 2027 · Fasnachtsfreitag, 5. Februar 2027 · Fasnachtssamstag, 6. Februar 2027 · Fasnachtssonntag, 7. Februar 2027 · Fasnachtsmontag, 8. Februar 2027 · Fasnachtsdienstag, 9. Februar 2027. Abschnittstitel «Fasnacht 2026 im Kanton Zug: Abgesagte und pausierende Anlässe» auf 2027 ändern. Die Einträge aktualisieren sich mit den einzelnen Umzugsseiten. Bäckermöhli (27. Januar 2027), Chrööpfelimee (14. Februar 2027) und Greth Schell (8. Februar 2027) sind bereits korrekt.
+Metabeschrieb (907 px): Chesslete am Schmudo, 4. Februar 2027, Umzüge in allen Gemeinden und Guggenmusigen bis zum Güdeldienstag: die Fasnacht im Kanton Zug.
+Quelle: Fasnachtskalender 2027 (Ostern 28.3.2027), bestätigt durch Chesslete, Räbefasnacht, Eiche Zunft, Wylägeri, Faschall, Fasi-Umzug Cham
+
+=== Chamer Fasnachtsumzug (Node 6268) · bestätigt
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6268/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/chamer-fasnachtsumzug/
+Bisher: 7. Februar 2027, 13:30 Uhr (korrekt)
+Neuer Text:
+Keine Änderung nötig. Tippfehler korrigieren: «Am Sonntag, 7. Februar 2027, zieht …» (Komma nach Sonntag, kein Leerzeichen vor dem Komma).
+Metabeschrieb (977 px): Am Sonntag, 7. Februar 2027, ab 13:30 Uhr zieht der Chamer Fasiumzug mit Wagen, Guggenmusigen und Fasnachtsgruppen durch die Strassen von Cham.
+Quelle: fasi-umzug.ch
+
+=== Fasnachtsumzug Steinhausen (Node 6273) · offen
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6273/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/fasnachtsumzug-steinhausen/
+Bisher: Fasnachtsfreitag, 13. Februar 2026, 14:00 Uhr
+Neuer Text:
+Am Fasnachtsfreitag, 5. Februar 2027, startet der bunte Fasnachtsumzug in Steinhausen. [Startzeit beim Verein Steigrind bestätigen]
+Offen: Datum und Zeit bei Steigrind bestätigen.
+Quelle: steigrind.ch: Anmeldung Umzug 2027 offen, Datum nicht genannt; Fasnachtsfreitag 2027 = 5. Februar
+
+=== Chnöpfli-Umzug Rotkreuz (Node 6274) · offen
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6274/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/chnoepfli-umzug-rotkreuz/
+Bisher: Freitag, 13. Februar 2026, 15:00 Uhr (Tippfehler «Freitga»)
+Neuer Text:
+Am Fasnachtsfreitag, 5. Februar 2027, zieht der Chnöpfli-Umzug vom Dorfmattplatz zum Lindenplatz und wieder zurück. [Motto 2027 und Startzeit bestätigen]
+Offen: Datum, Zeit und Motto beim Veranstalter bestätigen.
+Quelle: Veranstalterseite aus dieser Umgebung nicht abrufbar
+
+=== Umzug Herti Zug (Node 6275) · offen
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6275/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/umzug-herti-zug/
+Bisher: 14. Februar 2026, 14:00 Uhr
+Neuer Text:
+Am Fasnachtssamstag, 6. Februar 2027, startet der traditionelle Fasnachtsumzug im Herti-Quartier in Zug. [Datum und Zeit bei der Zunft der Letzibuzäli bestätigen]
+Offen: Datum und Zeit bestätigen.
+Quelle: lebuz.ch: Anmeldung Umzug 2027 offen, Datum nicht genannt
+
+=== FASI-Umzug Rotkreuz (Node 8138) · offen
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/8138/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/umzug-rotkreuz/
+Bisher: Sonntag, 15. Februar 2026
+Neuer Text:
+Der FASI-Umzug Rotkreuz findet am Fasnachtssonntag, 7. Februar 2027, statt. [beim Verein bestätigen]
+Offen: Datum bestätigen.
+Quelle: fasi-rotkreuz.ch: nur Rückblick 2026
+
+=== Umzug Neuheim (Node 8132) · offen
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/8132/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/umzug-neuheim/
+Bisher: Sonntag, 25. Januar 2026
+Neuer Text:
+[Datum 2027 bei der Gemeinde Neuheim oder den Menzikus erfragen; Umzug findet jeweils vor der Fasnachtswoche statt]
+Offen: Datum bestätigen.
+Quelle: Kalender Gemeinde Neuheim ohne Eintrag
+
+=== Nachtumzug Menzingen (Node 6270) · offen
+Bearbeiten: https://backend.zug-tourismus.ch/de/node/6270/edit
+Live: https://www.zug-tourismus.ch/de/poi/fest/nachtumzug-menzingen/
+Bisher: «findet im Jahr 2026 nicht statt»
+Neuer Text:
+[Klären, ob der Nachtumzug 2027 stattfindet. Falls nicht: Seite unpublizieren statt «findet nicht statt»]
+Offen: Bei den Organisatoren nachfragen.
+Quelle: keine Quelle 2027 gefunden
