@@ -183,7 +183,7 @@ const CONFIG = {
 const ZT="Foto: Martin Bissig / Zug Tourismus";
 const IMG = {
   zh:{src:"img/zh-hero.jpg",credit:"",ph:"Zürich"}, wi:{src:"img/wi-hero.jpg",credit:"",ph:"Winterthur"},
-  zg:{src:"img/zug-hero.jpg",credit:ZT},
+  zg:{src:"img/zug-hero.jpg",credit:ZT,pos:"50% 24%"},
   urban:{src:"img/zug-urban.jpg",credit:ZT}, natur:{src:"img/zug-natur.jpg",credit:ZT},
   kreativ:{src:"img/zug-kreativ.jpg",credit:ZT}, genuss:{src:"img/zug-genuss.jpg",credit:"Foto: David Biedert / Zug Tourismus"},
   kultur:{src:"img/zug-kultur.jpg",credit:ZT}, wege:{src:"img/zug-wege.jpg",credit:ZT}
@@ -239,7 +239,7 @@ const CLOSE = '<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true
 const HERZ = '<img src="img/herz-blau.png" alt="">', POI = '<img src="img/poi-blau.png" alt="">';
 function photo(key, cls=""){const i=IMG[key];
   if(!i.src)return `<div class="ph fallback ${cls}"><img src="img/poi-weiss.png" alt=""><span>${esc(i.ph)}</span></div>`;
-  return `<div class="ph ${cls}"><img class="photo" src="${esc(i.src)}" alt="" draggable="false" onerror="this.remove()">${i.credit?`<span class="credit">${esc(i.credit)}</span>`:""}</div>`;}
+  return `<div class="ph ${cls}"><img class="photo" src="${esc(i.src)}" alt="" draggable="false" decoding="async"${i.pos?` style="object-position:${i.pos}"`:""} onerror="this.remove()">${i.credit?`<span class="credit">${esc(i.credit)}</span>`:""}</div>`;}
 
 /* ================= State ================= */
 const app=document.getElementById("app");
@@ -442,5 +442,7 @@ try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist();}c
   if(db&&user&&await user.canEdit()){const b=document.createElement("button");b.className="admin-btn";b.textContent="Teilnahmen";b.onclick=openAdmin;document.body.appendChild(b);}
 }catch(e){}})();
 
+/* Alle Bilder vorladen, damit die Swipe-Karten ohne Verzögerung erscheinen */
+setTimeout(()=>Object.values(IMG).forEach(i=>{if(i.src){const im=new Image();im.decoding="async";im.src=i.src;}}),300);
 show("start");
 </script>
