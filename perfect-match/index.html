@@ -1,0 +1,420 @@
+<title>The Perfect Match</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: Kiosk-App, eine zentrierte Spalte (max 560px), Screens werden getauscht. Zug Tourismus CI: Schwarz/Weiss, Blau als Leitfarbe, Helvetica, Herz + POI. */
+:root{
+  --zt-blau:#006bf2; --zt-blau-hover:#0059ca; --zt-blau-press:#004aa8; --zt-blau-tint:#eaf2fe;
+  --zt-rot:#ff0000; --zt-gruen:#17a600;
+  --zt-black:#111111; --zt-ink:#1c1c1c; --zt-grey-700:#4a4a4a; --zt-grey-500:#7a7a7a;
+  --zt-grey-150:#e6e6e6; --zt-grey-50:#f7f7f7; --zt-white:#ffffff;
+  --zt-font-display:"Helvetica Now Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --zt-font-text:"Helvetica Now Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --zt-radius-sm:4px; --zt-radius-md:8px; --zt-radius-lg:16px;
+  --zt-ease:cubic-bezier(.22,.61,.36,1);
+  --zt-shadow-md:0 4px 16px rgba(17,17,17,.08); --zt-shadow-lg:0 12px 40px rgba(17,17,17,.16);
+  color-scheme:light;
+}
+html,body{height:100%}
+body{background:var(--zt-grey-50);color:var(--zt-black);font-family:var(--zt-font-text);font-size:16px;line-height:1.55;overscroll-behavior:none;-webkit-tap-highlight-color:transparent}
+.app{position:relative;max-width:560px;height:100%;margin:0 auto;background:var(--zt-white);overflow:hidden;box-shadow:0 0 0 1px var(--zt-grey-150)}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;padding-block:20px 26px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));overflow-y:auto;animation:in .24s var(--zt-ease) both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+h1,h2,h3{font-family:var(--zt-font-display);font-weight:700;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,7vw,36px);line-height:1.08;display:flex;align-items:flex-start;gap:12px}
+h2 .mk{flex:none;width:22px;height:29px;margin-top:3px;object-fit:contain}
+button{font:inherit;cursor:pointer;color:inherit}
+button:focus-visible,input:focus-visible{outline:3px solid var(--zt-blau);outline-offset:2px}
+img{display:block}
+.ph{position:relative;overflow:hidden;background:var(--zt-blau)}
+.ph img.photo{width:100%;height:100%;object-fit:cover}
+.ph.fallback{display:grid;place-content:center;justify-items:center;gap:10px;color:#fff;font-family:var(--zt-font-display);font-weight:700;font-size:clamp(18px,4.5vw,28px);letter-spacing:-.02em;text-align:center;padding:8px}
+.ph.fallback img{width:28%;max-width:56px;height:auto}
+.split .ph.fallback>*,.split .credit,.mini .ph.fallback span{display:none}
+.credit{position:absolute;right:6px;bottom:4px;font-size:10px;line-height:1.2;color:rgba(255,255,255,.85);text-shadow:0 1px 2px rgba(0,0,0,.6);max-width:90%;text-align:right;pointer-events:none}
+
+/* Fortschritt */
+.top{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.step{font-family:var(--zt-font-display);font-weight:700;font-variant-numeric:tabular-nums}
+.bar{flex:1;height:6px;border-radius:6px;background:var(--zt-grey-150);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--zt-blau);transition:width .24s var(--zt-ease)}
+.x{background:none;border:0;padding:6px;line-height:0;color:var(--zt-black)}
+
+/* Buttons */
+.cta{align-self:stretch;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--zt-blau);color:#fff;border:0;border-radius:var(--zt-radius-md);padding:18px 28px;font-family:var(--zt-font-display);font-weight:700;font-size:18px;margin-top:auto;transition:background .14s var(--zt-ease),transform .14s var(--zt-ease)}
+.cta:hover{background:var(--zt-blau-hover)} .cta:active{background:var(--zt-blau-press);transform:translateY(1px)}
+.cta[disabled]{background:var(--zt-grey-150);color:var(--zt-grey-500);cursor:default}
+.link{align-self:center;background:none;border:0;color:var(--zt-grey-700);text-decoration:underline;padding:12px;font-size:15px}
+
+/* Start (Sujet) */
+#start{padding:0;color:#fff;background:var(--zt-black)}
+.split{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;background:#fff}
+.split .ph{height:100%}
+.split .lbl{position:absolute;left:0;right:0;top:calc(18px + env(safe-area-inset-top,0px));text-align:center;font-family:var(--zt-font-display);font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 40%,rgba(0,0,0,.82) 72%)}
+#start .inner{position:relative;display:flex;flex-direction:column;height:100%;padding-block:28px 34px;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
+.hero{margin-top:auto;display:grid;gap:14px}
+.hero .poi{width:44px;height:58px;object-fit:contain}
+.hero h1{font-size:clamp(46px,13vw,72px);line-height:.95}
+.hero p{font-size:20px;margin:0}
+.pill{justify-self:start;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--zt-black);border-radius:999px;padding:6px 14px 6px 8px;font-size:14px;font-weight:700}
+.pill img{width:18px;height:18px;object-fit:contain}
+#start .cta{margin-top:8px}
+.logo-w{width:150px;margin:18px auto 0;opacity:.95}
+
+/* Schritt 1 */
+.opts{display:grid;gap:12px;margin:0 0 24px}
+.opt{display:flex;align-items:center;gap:18px;width:100%;text-align:left;background:#fff;border:1.5px solid var(--zt-grey-150);border-radius:var(--zt-radius-md);padding:18px;font-size:19px;font-family:var(--zt-font-display);font-weight:700;transition:border-color .14s,background .14s}
+.opt svg.ic{width:36px;height:36px;flex:none;stroke:var(--zt-black);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.r{margin-left:auto;width:24px;height:24px;border-radius:50%;border:2px solid var(--zt-grey-150);flex:none;display:grid;place-items:center;background:#fff}
+[aria-checked="true"]{border-color:var(--zt-blau)!important;background:var(--zt-blau-tint)!important}
+[aria-checked="true"] .r{border-color:var(--zt-blau);background:var(--zt-blau)}
+[aria-checked="true"] .r::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
+[aria-checked="true"] svg.ic{stroke:var(--zt-blau)}
+
+/* Schritt 3 */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 24px}
+.tile{position:relative;background:#fff;border:1.5px solid var(--zt-grey-150);border-radius:var(--zt-radius-md);padding:32px 10px 22px;display:flex;flex-direction:column;align-items:center;gap:14px;font-size:17px;font-family:var(--zt-font-display);font-weight:700;transition:border-color .14s,background .14s}
+.tile svg.ic{width:40px;height:40px;stroke:var(--zt-black);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tile .r{position:absolute;top:10px;right:10px;width:22px;height:22px}
+
+/* Swipe-Deck */
+.hint{color:var(--zt-grey-700);margin:10px 0 0;font-size:15px}
+.deck{position:relative;flex:1;min-height:330px;margin:16px 0 18px}
+.card{position:absolute;inset:0;border-radius:var(--zt-radius-lg);overflow:hidden;background:var(--zt-blau);box-shadow:var(--zt-shadow-lg);touch-action:none;user-select:none;-webkit-user-select:none;will-change:transform;transition:transform .32s var(--zt-ease)}
+.card .ph{position:absolute;inset:0}
+.card img.photo{pointer-events:none;-webkit-user-drag:none}
+.card .cap{position:absolute;left:0;right:0;bottom:0;padding:80px 22px 22px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.78));color:#fff}
+.card .cap b{display:block;font-family:var(--zt-font-display);font-size:32px;line-height:1.05;letter-spacing:-.02em}
+.card .cap span{font-size:16px}
+.card .ph.fallback{display:grid;place-content:center;justify-items:center;gap:10px;color:#fff;font-family:var(--zt-font-display);font-weight:700;font-size:clamp(18px,4.5vw,28px);letter-spacing:-.02em;text-align:center;padding:8px}
+.ph.fallback img{width:28%;max-width:56px;height:auto}
+.credit{bottom:auto;top:8px}
+.stamp{position:absolute;top:28px;padding:4px 14px;border:4px solid;border-radius:var(--zt-radius-md);font-family:var(--zt-font-display);font-weight:700;font-size:30px;letter-spacing:.04em;opacity:0;background:#fff}
+.stamp.yes{left:20px;color:var(--zt-blau);transform:rotate(-10deg)}
+.stamp.no{right:20px;color:var(--zt-black);transform:rotate(10deg)}
+.card.dragging{transition:none}
+.swbtns{display:flex;justify-content:center;gap:36px}
+.sw{width:74px;height:74px;border-radius:50%;background:#fff;border:1.5px solid var(--zt-grey-150);display:grid;place-items:center;box-shadow:var(--zt-shadow-md);transition:transform .14s var(--zt-ease)}
+.sw:active{transform:scale(.92)}
+.sw svg{width:28px;height:28px;fill:none;stroke:var(--zt-black);stroke-width:2.6;stroke-linecap:round}
+.sw.yes img{width:34px;height:34px;object-fit:contain}
+.count{text-align:center;color:var(--zt-grey-500);font-size:14px;margin-top:12px;font-variant-numeric:tabular-nums}
+
+/* Resultat (Sujet: Icon + Claim oben, Bild Mitte, URL unten) */
+.res-k{font-size:18px;color:var(--zt-grey-700);margin:4px 0 6px;display:flex;align-items:center;gap:10px}
+.res-k img{width:22px;height:29px;object-fit:contain}
+.res-name{font-family:var(--zt-font-display);font-weight:700;font-size:clamp(56px,16vw,84px);line-height:.92;letter-spacing:-.03em}
+.res-claim{font-family:var(--zt-font-display);font-weight:700;font-size:22px;color:var(--zt-blau);margin-top:8px}
+.res-txt{margin:12px 0 18px;max-width:40ch}
+.res-img{margin-left:calc(-1 * max(24px,env(safe-area-inset-left,0px)));margin-right:calc(-1 * max(24px,env(safe-area-inset-right,0px)));height:220px;flex:none}
+.hl{margin:20px 0 22px}
+.hl h3{font-size:18px;margin-bottom:10px}
+.hl ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.hl li{display:flex;gap:12px;align-items:flex-start}
+.hl li img{flex:none;width:16px;height:16px;object-fit:contain;margin-top:4px}
+.url{font-family:var(--zt-font-display);font-weight:700;text-align:center;margin-top:14px;font-size:15px}
+
+/* Formular */
+.bubble{position:relative;background:var(--zt-blau);color:#fff;border-radius:28px;padding:18px 22px;margin:20px 0 28px;font-family:var(--zt-font-display);font-weight:700;font-size:19px;line-height:1.3}
+.bubble::after{content:"";position:absolute;left:38px;bottom:-14px;border:14px solid transparent;border-top-color:var(--zt-blau);border-bottom:0;border-left-width:4px}
+.bubble small{display:block;font-family:var(--zt-font-text);font-weight:400;font-size:14px;margin-top:6px;opacity:.95}
+.mini{display:flex;gap:14px;align-items:center;margin-top:18px}
+.mini .ph{width:76px;height:76px;border-radius:var(--zt-radius-md);flex:none}
+.mini b{font-family:var(--zt-font-display);font-size:22px;display:block;line-height:1.1}
+.mini span{color:var(--zt-grey-700);font-size:15px}
+form{display:grid;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fld{display:grid;gap:6px;min-width:0}
+.fld label{font-size:14px;font-weight:700}
+.fld input{width:100%;box-sizing:border-box;font:inherit;font-size:17px;padding:14px;border:1.5px solid var(--zt-grey-150);border-radius:var(--zt-radius-md);background:#fff;color:var(--zt-black)}
+.fld input:focus{border-color:var(--zt-blau);outline:none}
+.fld input[aria-invalid="true"]{border-color:var(--zt-rot)}
+.chk{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.45}
+.chk input{width:22px;height:22px;margin:0;flex:none;accent-color:var(--zt-blau)}
+.err{color:#d00000;font-size:14px;font-weight:700;min-height:1.2em}
+details.tnb{font-size:13px;color:var(--zt-grey-700);line-height:1.5}
+details.tnb summary{cursor:pointer;font-weight:700;color:var(--zt-black)}
+form .cta{margin-top:4px}
+
+/* Danke */
+.thanks{margin:auto 0;display:grid;gap:16px;justify-items:center;text-align:center}
+.thanks .big{width:88px;height:88px;object-fit:contain}
+.thanks p{color:var(--zt-grey-700);max-width:32ch;margin:0}
+.ghost{background:#fff;border:1.5px solid var(--zt-black);border-radius:var(--zt-radius-md);padding:14px 24px;font-family:var(--zt-font-display);font-weight:700;display:inline-flex;gap:10px;align-items:center}
+.timer{font-size:13px;color:var(--zt-grey-500);font-variant-numeric:tabular-nums}
+.thanks .logo{width:190px;margin-top:22px}
+
+/* Admin */
+.admin-btn{position:fixed;right:max(10px,env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:50;background:rgba(17,17,17,.06);border:0;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:var(--zt-grey-500)}
+.admin{position:fixed;inset:0;z-index:60;background:rgba(17,17,17,.5);display:grid;place-items:center;padding:16px}
+.admin .box{background:#fff;border-radius:var(--zt-radius-lg);width:min(620px,100%);max-height:86%;overflow:auto;padding:22px;box-sizing:border-box}
+.admin h3{font-size:24px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.kpis div{background:var(--zt-grey-50);border-radius:var(--zt-radius-md);padding:10px;text-align:center}
+.kpis b{display:block;font-family:var(--zt-font-display);font-size:26px;font-variant-numeric:tabular-nums}
+.kpis span{font-size:12px;color:var(--zt-grey-700)}
+.tbl{overflow-x:auto;border:1px solid var(--zt-grey-150);border-radius:var(--zt-radius-md);margin:10px 0}
+.tbl table{border-collapse:collapse;width:100%;font-size:13px}
+.tbl th,.tbl td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--zt-grey-150);white-space:nowrap}
+.acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.acts button{border:1.5px solid var(--zt-blau);color:var(--zt-blau);background:#fff;border-radius:var(--zt-radius-md);padding:10px 16px;font-weight:700;font-size:14px}
+.acts button.pri{background:var(--zt-blau);color:#fff}
+.note{font-size:13px;color:var(--zt-grey-700)}
+.imgrow{display:grid;grid-template-columns:1fr;gap:8px;padding:12px 0;border-top:1px solid var(--zt-grey-150)}
+.up{justify-self:start;background:var(--zt-blau);color:#fff;border-radius:var(--zt-radius-md);padding:10px 16px;font-weight:700;font-size:14px;cursor:pointer}
+@media (max-width:380px){.row2{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<div class="app" id="app"></div>
+
+<script>
+/* ================= KONFIGURATION ================= */
+const CONFIG = {
+  prize: "Gewinnen Sie ein Event-Erlebnis in Ihrer Perfect-Match-Destination.",
+  organizer: "Zug Tourismus, Bahnhofplatz, 6300 Zug, gemeinsam mit den Partnerdestinationen Zürich und Winterthur",
+  deadline: "Ende der Messe",
+  idleSeconds: 75
+};
+
+/* Bilder: Zug aus der ZT-Mediendatenbank (Moodcase). Zürich und Winterthur werden im Admin-Bereich hochgeladen
+   (offizielle Bilder der Partnerdestinationen); bis dahin erscheint eine blaue CI-Fläche mit Städtenamen. */
+const ZT="Foto: Martin Bissig / Zug Tourismus";
+const IMG = {
+  zh:{src:"",credit:"",ph:"Zürich"}, wi:{src:"",credit:"",ph:"Winterthur"},
+  zg:{src:"img/zug-hero.jpg",credit:ZT},
+  urban:{src:"img/zug-urban.jpg",credit:ZT}, natur:{src:"img/zug-natur.jpg",credit:ZT},
+  kreativ:{src:"img/zug-kreativ.jpg",credit:ZT}, genuss:{src:"img/zug-genuss.jpg",credit:"Foto: David Biedert / Zug Tourismus"},
+  kultur:{src:"img/zug-kultur.jpg",credit:ZT}, wege:{src:"img/zug-wege.jpg",credit:ZT}
+};
+
+const DEST = {
+  ZH:{name:"Zürich", claim:"The Urban Connector.", img:"zh",
+      txt:"International, inspirierend, voller Möglichkeiten. Zürich ist die perfekte Wahl für Ihr nächstes Event.",
+      hl:["Exklusive Locations mitten in der City","Kulinarik auf höchstem Niveau","Vielfältige Rahmenprogramme"]},
+  WI:{name:"Winterthur", claim:"The Creative Hub.", img:"wi",
+      txt:"Industriekultur, Museen und kreative Räume. Winterthur gibt Ihrem Event Charakter und Raum für neue Ideen.",
+      hl:["Eventhallen mit Industriecharme","Museumsstadt mit grossem Kulturangebot","Kurze Wege und viel Grün"]},
+  ZG:{name:"Zug", claim:"Most Natural Business Place.", img:"zg",
+      txt:"Nicht gross, aber grossartig. Seeblick, Altstadt und kurze Wege bringen Fokus und Erholung in Ihr Event.",
+      hl:["Locations direkt am Zugersee","Kompakt: vom Bahnhof zu Fuss zur Location","Ausflüge auf den Zugerberg und aufs Wasser"]}
+};
+
+const Q1 = [
+  {k:"meeting", label:"Meeting", ic:"cal", pts:{ZG:2,ZH:1}},
+  {k:"workshop", label:"Workshop", ic:"team", pts:{WI:2,ZG:1}},
+  {k:"kundenanlass", label:"Kundenanlass", ic:"hand", pts:{ZH:2,ZG:1}},
+  {k:"teamevent", label:"Teamevent", ic:"trophy", pts:{WI:2,ZG:1}}
+];
+const SWIPE = [
+  {k:"urban", label:"Urbanität", sub:"Moderne Architektur und City-Feeling", img:"urban", pts:{ZH:3}},
+  {k:"natur", label:"Natur", sub:"See, Berge und frische Luft", img:"natur", pts:{ZG:3,ZH:1}},
+  {k:"kreativ", label:"Kreativität", sub:"Locations mit Charakter, vom Loft bis zur Fabrikhalle", img:"kreativ", pts:{WI:3}},
+  {k:"genuss", label:"Genuss", sub:"Apéro, Fine Dining und lokale Spezialitäten", img:"genuss", pts:{ZH:2,ZG:1}},
+  {k:"kultur", label:"Kultur", sub:"Museen, Kunst und Geschichte", img:"kultur", pts:{WI:2,ZH:1}},
+  {k:"wege", label:"Kurze Wege", sub:"Ankommen und loslegen", img:"wege", pts:{ZG:2,WI:1}}
+];
+const Q3 = [
+  {k:"begeisterung", label:"Begeisterung", ic:"bolt", pts:{ZH:2}},
+  {k:"austausch", label:"Austausch", ic:"chat", pts:{ZG:2}},
+  {k:"motivation", label:"Motivation", ic:"chart", pts:{WI:2}},
+  {k:"inspiration", label:"Inspiration", ic:"bulb", pts:{WI:1,ZH:1}}
+];
+
+/* ================= Icons (funktional, Linienstil) ================= */
+const IC = {
+  cal:'<rect x="5" y="7" width="30" height="27" rx="3"/><path d="M5 14h30M12 4v6M28 4v6M11 19h3M18.5 19h3M26 19h3M11 25h3M18.5 25h3M26 25h3"/>',
+  team:'<circle cx="20" cy="10" r="4.5"/><circle cx="9" cy="14" r="3.6"/><circle cx="31" cy="14" r="3.6"/><path d="M12 33v-6a8 8 0 0 1 16 0v6zM3 31v-4a6 6 0 0 1 8.5-5.5M37 31v-4a6 6 0 0 0-8.5-5.5"/>',
+  hand:'<path d="M3 17l7-6 6 3 4-2 6 0 11 6M3 17l3 10 3 1M37 18l-3 9-4 1"/><path d="M14 18l5 4c2 1.5 4 0 3-2l-4-4M20 24l4 3c1.5 1 3.5-.5 2.5-2M24 27l2 1.5c1.5 1 3-.5 2-2M18 22l-1 4c1.5 1.5 3.5 1 4.5 0"/>',
+  trophy:'<path d="M12 5h16v9a8 8 0 0 1-16 0zM12 8H6v3a6 6 0 0 0 6 6M28 8h6v3a6 6 0 0 1-6 6M20 22v6M13 35h14l-2-7H15z"/>',
+  bolt:'<path d="M23 3L9 22h10l-3 15 15-20H21z"/>',
+  chat:'<path d="M6 8h28v18H18l-8 6v-6H6z"/><path d="M12 14h16M12 20h12"/>',
+  chart:'<path d="M5 35h30M8 35V24h5v11M17 35V18h5v17M26 35V11h5v24M6 17l9-6 6 3 11-9M27 5h5v5"/>',
+  bulb:'<path d="M14 26c-3-2.5-5-6-5-9.5a11 11 0 0 1 22 0c0 3.5-2 7-5 9.5v4H14zM15 34h10M17 37h6"/><path d="M20 1v2M5 8l1.5 1.5M35 8l-1.5 1.5"/>'
+};
+const ic = k => `<svg class="ic" viewBox="0 0 40 40" aria-hidden="true">${IC[k]}</svg>`;
+const ARR = '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CLOSE = '<svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const HERZ = '<img src="img/herz-blau.png" alt="">', POI = '<img src="img/poi-blau.png" alt="">';
+function photo(key, cls=""){const i=IMG[key];
+  if(!i.src)return `<div class="ph fallback ${cls}"><img src="img/poi-weiss.png" alt=""><span>${esc(i.ph)}</span></div>`;
+  return `<div class="ph ${cls}"><img class="photo" src="${esc(i.src)}" alt="" draggable="false" onerror="this.remove()">${i.credit?`<span class="credit">${esc(i.credit)}</span>`:""}</div>`;}
+
+/* ================= State ================= */
+const app=document.getElementById("app");
+let S;
+function reset(){S={q1:null,likes:[],q3:null,result:null};}
+reset();
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const topBar=n=>`<div class="top"><span class="step">${n} / 3</span><div class="bar"><i style="width:${n/3*100}%"></i></div><button class="x" data-act="home" aria-label="Quiz abbrechen">${CLOSE}</button></div>`;
+const title=(t,mk="herz")=>`<h2><img class="mk" src="img/${mk}-blau.png" alt="">${t}</h2>`;
+
+/* ================= Screens ================= */
+const V={
+  start(){return `<section class="screen" id="start">
+    <div class="split">${[["zh","Zürich"],["wi","Winterthur"],["zg","Zug"]].map(([k,l])=>`<div style="position:relative">${photo(k)}<span class="lbl">${l}</span></div>`).join("")}</div>
+    <div class="shade"></div>
+    <div class="inner"><div class="hero">
+      <img class="poi" src="img/poi-weiss.png" alt="">
+      <h1>The Perfect Match.</h1>
+      <p>Finden Sie in drei Schritten Ihre Event-Destination.</p>
+      <span class="pill">${HERZ}Mitmachen und gewinnen</span>
+      <button class="cta" data-act="go1">Quiz starten ${ARR}</button>
+      <img class="logo-w" src="img/logo-weiss.png" alt="Zug Tourismus">
+    </div></div></section>`;},
+  q1(){return `<section class="screen">${topBar(1)}${title("Was planen Sie?")}<div style="height:24px"></div>
+    <div class="opts" role="radiogroup" aria-label="Eventart">${Q1.map(o=>`<button class="opt" role="radio" aria-checked="${S.q1===o.k}" data-q1="${o.k}">${ic(o.ic)}<span>${o.label}</span><span class="r"></span></button>`).join("")}</div>
+    <button class="cta" data-act="go2" ${S.q1?"":"disabled"}>Weiter ${ARR}</button></section>`;},
+  q2(){return `<section class="screen">${topBar(2)}${title("Was ist Ihnen wichtig?","poi")}
+    <p class="hint">Nach rechts wischen für «Match», nach links für «Nope».</p>
+    <div class="deck" id="deck"></div>
+    <div class="swbtns"><button class="sw no" data-act="nope" aria-label="Nope"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button class="sw yes" data-act="like" aria-label="Match">${HERZ}</button></div>
+    <div class="count" id="count"></div></section>`;},
+  q3(){return `<section class="screen">${topBar(3)}${title("Was soll Ihr Event auslösen?")}<div style="height:24px"></div>
+    <div class="grid" role="radiogroup" aria-label="Wirkung">${Q3.map(o=>`<button class="tile" role="radio" aria-checked="${S.q3===o.k}" data-q3="${o.k}"><span class="r"></span>${ic(o.ic)}<span>${o.label}</span></button>`).join("")}</div>
+    <button class="cta" data-act="result" ${S.q3?"":"disabled"}>Jetzt Match entdecken ${ARR}</button></section>`;},
+  result(){const d=DEST[S.result];return `<section class="screen">
+    <div class="res-k">${POI}Ihr Perfect Match ist</div>
+    <div class="res-name">${d.name}.</div><div class="res-claim">${d.claim}</div>
+    <p class="res-txt">${d.txt}</p>
+    ${photo(d.img,"res-img")}
+    <div class="hl"><h3>Unsere Highlights für Sie</h3><ul>${d.hl.map(h=>`<li>${HERZ}<span>${h}</span></li>`).join("")}</ul></div>
+    <button class="cta" data-act="form">Am Wettbewerb teilnehmen ${ARR}</button>
+    <button class="link" data-act="home">Ohne Teilnahme beenden</button></section>`;},
+  form(){const d=DEST[S.result];return `<section class="screen">
+    ${title("Fast geschafft.")}
+    <div class="mini">${photo(d.img)}<div><b>${d.name}.</b><span>${d.claim}</span></div></div>
+    <div class="bubble">${esc(CONFIG.prize)}<small>Teilnahmeschluss: ${esc(CONFIG.deadline)}.</small></div>
+    <form id="f" novalidate>
+      <div class="row2"><div class="fld"><label for="fn">Vorname *</label><input id="fn" autocomplete="given-name"></div>
+      <div class="fld"><label for="ln">Nachname *</label><input id="ln" autocomplete="family-name"></div></div>
+      <div class="fld"><label for="em">E-Mail *</label><input id="em" type="email" inputmode="email" autocomplete="email"></div>
+      <div class="fld"><label for="co">Firma</label><input id="co" autocomplete="organization"></div>
+      <label class="chk"><input type="checkbox" id="tc"><span>Ich akzeptiere die Teilnahmebedingungen und bin einverstanden, dass meine Angaben zur Durchführung des Wettbewerbs gespeichert werden. *</span></label>
+      <label class="chk"><input type="checkbox" id="nl"><span>Ich möchte Event-Inspiration und News per E-Mail erhalten (freiwillig, jederzeit abbestellbar).</span></label>
+      <details class="tnb"><summary>Teilnahmebedingungen</summary><p>Veranstalter: ${esc(CONFIG.organizer)}. Teilnahme kostenlos und ohne Kaufverpflichtung, ab 18 Jahren, eine Teilnahme pro Person. Teilnahmeschluss: ${esc(CONFIG.deadline)}. Die Gewinnerin oder der Gewinner wird ausgelost und per E-Mail benachrichtigt. Keine Barauszahlung, der Rechtsweg ist ausgeschlossen. Die Daten werden ausschliesslich für den Wettbewerb und, falls oben angekreuzt, für den Newsletter verwendet und nicht an Dritte weitergegeben.</p></details>
+      <div class="err" id="err" role="alert"></div>
+      <button class="cta" type="submit" id="sb">Teilnehmen ${ARR}</button>
+    </form>
+    <button class="link" data-act="home">Ohne Teilnahme beenden</button></section>`;},
+  thanks(){const d=DEST[S.result];return `<section class="screen"><div class="thanks">
+    <img class="big" src="img/herz-blau.png" alt="">
+    <h2 style="justify-content:center">Danke, Sie sind dabei.</h2>
+    <p>Viel Glück bei der Verlosung. Und bis bald in ${d.name}.</p>
+    <button class="ghost" data-act="home">Neues Match starten</button>
+    <div class="timer" id="tm"></div>
+    <img class="logo" src="img/logo.png" alt="Zug Tourismus"></div></section>`;}
+};
+
+let cur="start";
+function show(name){cur=name;app.innerHTML=V[name]();if(name==="q2")buildDeck();if(name==="thanks")countdown();
+  const h=app.querySelector("h2");if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true});}}
+
+/* ================= Swipe-Deck ================= */
+let idx=0;
+function buildDeck(){idx=0;S.likes=[];const deck=document.getElementById("deck");
+  deck.innerHTML=SWIPE.map((c,i)=>`<div class="card" data-i="${i}" style="z-index:${SWIPE.length-i};transform:scale(${1-Math.min(i,2)*.04}) translateY(${Math.min(i,2)*12}px)">${photo(c.img)}<div class="stamp yes">MATCH</div><div class="stamp no">NOPE</div><div class="cap"><b>${c.label}.</b><span>${c.sub}</span></div></div>`).join("");
+  updCount();attach();}
+function updCount(){const el=document.getElementById("count");if(el)el.textContent=`${Math.min(idx+1,SWIPE.length)} von ${SWIPE.length}`;}
+const topCard=()=>document.querySelector(`.card[data-i="${idx}"]`);
+function restack(){document.querySelectorAll(".card").forEach(c=>{const d=+c.dataset.i-idx;if(d>0)c.style.transform=`scale(${1-Math.min(d,2)*.04}) translateY(${Math.min(d,2)*12}px)`;});}
+let busy=false;
+function decide(like){const c=topCard();if(!c||busy)return;busy=true;if(like)S.likes.push(SWIPE[idx].k);
+  c.classList.remove("dragging");c.style.transform=`translateX(${like?640:-640}px) rotate(${like?22:-22}deg)`;c.querySelector(like?".yes":".no").style.opacity=1;
+  idx++;restack();updCount();setTimeout(()=>{busy=false;c.remove();if(idx>=SWIPE.length)show("q3");else attach();},300);}
+function attach(){const c=topCard();if(!c)return;let sx=0,sy=0,dx=0,on=false;
+  c.onpointerdown=e=>{on=true;sx=e.clientX;sy=e.clientY;dx=0;c.setPointerCapture(e.pointerId);c.classList.add("dragging");};
+  c.onpointermove=e=>{if(!on)return;dx=e.clientX-sx;c.style.transform=`translate(${dx}px,${(e.clientY-sy)*.3}px) rotate(${dx/18}deg)`;
+    c.querySelector(".yes").style.opacity=Math.max(0,Math.min(1,dx/90));c.querySelector(".no").style.opacity=Math.max(0,Math.min(1,-dx/90));};
+  const end=()=>{if(!on)return;on=false;c.classList.remove("dragging");if(Math.abs(dx)>90)decide(dx>0);else{c.style.transform="";c.querySelectorAll(".stamp").forEach(s=>s.style.opacity=0);}};
+  c.onpointerup=end;c.onpointercancel=end;}
+
+/* ================= Auswertung ================= */
+function compute(){const sc={ZH:0,WI:0,ZG:0};const add=p=>{for(const k in p)sc[k]+=p[k];};
+  add(Q1.find(o=>o.k===S.q1).pts);SWIPE.filter(c=>S.likes.includes(c.k)).forEach(c=>add(c.pts));add(Q3.find(o=>o.k===S.q3).pts);
+  const max=Math.max(...Object.values(sc));const best=Object.keys(sc).filter(k=>sc[k]===max);
+  S.result=best[Math.floor(Math.random()*best.length)];}
+
+/* ================= Speicherung (db, mit lokalem Puffer bei Funkloch) ================= */
+let db=null;const QKEY="ppm_pending_v1";
+const readQ=()=>{try{return JSON.parse(localStorage.getItem(QKEY)||"[]")}catch(e){return []}};
+const writeQ=q=>{try{localStorage.setItem(QKEY,JSON.stringify(q))}catch(e){}};
+async function store(entry){if(db){try{await db.collection("entries").add(entry);return;}catch(e){}}const q=readQ();q.push(entry);writeQ(q);}
+async function flushQ(){if(!db)return;const q=readQ();if(!q.length)return;const left=[];
+  for(const e of q){try{await db.collection("entries").add(e);}catch(err){left.push(e);}}writeQ(left);}
+
+async function submit(ev){ev.preventDefault();const f=ev.target,g=id=>f.querySelector("#"+id);
+  const fn=g("fn").value.trim(),ln=g("ln").value.trim(),em=g("em").value.trim(),co=g("co").value.trim(),err=g("err");
+  g("fn").setAttribute("aria-invalid",!fn);g("ln").setAttribute("aria-invalid",!ln);
+  const emOk=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em);g("em").setAttribute("aria-invalid",!emOk);
+  if(!fn||!ln){err.textContent="Bitte Vor- und Nachnamen ausfüllen.";return;}
+  if(!emOk){err.textContent="Bitte eine gültige E-Mail-Adresse eingeben.";return;}
+  if(!g("tc").checked){err.textContent="Bitte die Teilnahmebedingungen akzeptieren.";return;}
+  err.textContent="";const sb=g("sb");sb.disabled=true;sb.textContent="Wird gespeichert …";
+  await store({firstName:fn.slice(0,80),lastName:ln.slice(0,80),email:em.slice(0,160).toLowerCase(),company:co.slice(0,120),
+    newsletter:g("nl").checked,consent:true,match:DEST[S.result].name,eventType:S.q1,likes:S.likes.join(","),effect:S.q3,ts:new Date().toISOString()});
+  show("thanks");}
+
+/* ================= Kiosk ================= */
+let tmr=null;
+function countdown(){let n=15;clearInterval(tmr);const tick=()=>{if(cur!=="thanks"){clearInterval(tmr);return;}const el=document.getElementById("tm");if(el)el.textContent=`Neustart in ${n} s`;if(n--<=0){clearInterval(tmr);goHome();}};tick();tmr=setInterval(tick,1000);}
+let last=Date.now();["pointerdown","keydown","input"].forEach(t=>addEventListener(t,()=>last=Date.now(),{passive:true}));
+setInterval(()=>{if(cur!=="start"&&cur!=="thanks"&&Date.now()-last>CONFIG.idleSeconds*1000&&!document.querySelector(".admin"))goHome();},5000);
+function goHome(){reset();show("start");}
+
+app.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.q1){S.q1=b.dataset.q1;app.querySelectorAll("[data-q1]").forEach(x=>x.setAttribute("aria-checked",x===b));app.querySelector('[data-act="go2"]').disabled=false;return;}
+  if(b.dataset.q3){S.q3=b.dataset.q3;app.querySelectorAll("[data-q3]").forEach(x=>x.setAttribute("aria-checked",x===b));app.querySelector('[data-act="result"]').disabled=false;return;}
+  const a=b.dataset.act;
+  if(a==="go1")show("q1");else if(a==="go2")show("q2");else if(a==="like")decide(true);else if(a==="nope")decide(false);
+  else if(a==="result"){compute();show("result");}else if(a==="form")show("form");else if(a==="home")goHome();});
+app.addEventListener("submit",submit);
+addEventListener("keydown",e=>{if(cur!=="q2")return;if(e.key==="ArrowRight")decide(true);if(e.key==="ArrowLeft")decide(false);});
+
+/* ================= Admin (nur für Bearbeitende sichtbar) ================= */
+const csvCell=v=>{v=v==null?"":String(v);if(/^[=+\-@\t\r]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"';};
+async function openAdmin(){const ov=document.createElement("div");ov.className="admin";
+  ov.innerHTML=`<div class="box" role="dialog" aria-modal="true" aria-label="Teilnahmen"><h3>Teilnahmen.</h3><p class="note" id="ad-st">Wird geladen …</p><div id="ad-b"></div><div id="ad-img"></div><div class="acts"><button class="pri" id="ad-csv">CSV exportieren</button><button id="ad-x">Schliessen</button></div></div>`;
+  document.body.appendChild(ov);ov.querySelector("#ad-x").onclick=()=>ov.remove();ov.onclick=e=>{if(e.target===ov)ov.remove();};
+  const st=ov.querySelector("#ad-st");let rows=[];const pend=readQ().length;
+  try{await flushQ();const snap=await db.collection("entries").orderBy("ts","desc").get();rows=snap.docs.map(d=>d.data());
+    const left=readQ().length;st.textContent=left?`${left} Teilnahme(n) noch lokal auf diesem Gerät, Synchronisation folgt.`:(pend?`${pend} lokal gepufferte Teilnahme(n) synchronisiert.`:"Alle Teilnahmen sind gespeichert.");}
+  catch(e){st.textContent="Teilnahmen konnten nicht geladen werden. Bitte Verbindung prüfen.";}
+  const cnt=k=>rows.filter(r=>r.match===k).length,body=ov.querySelector("#ad-b");
+  body.innerHTML=`<div class="kpis"><div><b>${rows.length}</b><span>Total</span></div><div><b>${cnt("Zürich")}</b><span>Zürich</span></div><div><b>${cnt("Winterthur")}</b><span>Winterthur</span></div><div><b>${cnt("Zug")}</b><span>Zug</span></div></div>
+    <div class="note">Newsletter-Opt-in: ${rows.filter(r=>r.newsletter).length}</div>
+    <div class="tbl"><table><thead><tr><th>Zeit</th><th>Name</th><th>E-Mail</th><th>Firma</th><th>Match</th><th>NL</th></tr></thead><tbody></tbody></table></div>`;
+  const tb=body.querySelector("tbody");rows.slice(0,50).forEach(r=>{const tr=document.createElement("tr");
+    [new Date(r.ts).toLocaleString("de-CH",{dateStyle:"short",timeStyle:"short"}),`${r.firstName} ${r.lastName}`,r.email,r.company||"",r.match,r.newsletter?"ja":""].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td);});tb.appendChild(tr);});
+  imgAdmin(ov.querySelector("#ad-img"));
+  ov.querySelector("#ad-csv").onclick=async()=>{const dl=await claude.use("downloads");if(!dl){st.textContent="Download ist in dieser Ansicht nicht verfügbar.";return;}
+    const cols=["ts","firstName","lastName","email","company","match","newsletter","eventType","likes","effect"];
+    const csv="﻿"+[cols.join(";"),...rows.map(r=>cols.map(c=>csvCell(r[c])).join(";"))].join("\r\n");
+    try{await dl.save({filename:`perfect-match-teilnahmen-${new Date().toISOString().slice(0,10)}.csv`,data:new Blob([csv],{type:"text/csv"})});st.textContent="CSV gespeichert.";}
+    catch(e){st.textContent=e&&e.code==="declined"?"Download abgebrochen.":"CSV konnte nicht gespeichert werden.";}};}
+
+/* Bilder Zürich/Winterthur: Upload durch Bearbeitende, gespeichert als Asset, Verweis in db settings/images */
+async function loadImgs(){if(!db)return;try{const d=(await db.doc("settings/images").get()).data()||{};
+  ["zh","wi"].forEach(k=>{const u=d[k];if(typeof u==="string"&&/^(\/_blob\/|https:\/\/)/.test(u)){IMG[k].src=u;IMG[k].credit=String(d[k+"Credit"]||"").slice(0,80);}});
+  if(cur==="start"||cur==="result"||cur==="form")show(cur);}catch(e){}}
+function shrink(file){return new Promise((res,rej)=>{const im=new Image();im.onload=()=>{const sc=Math.min(1,1600/Math.max(im.width,im.height));const c=document.createElement("canvas");c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);c.getContext("2d").drawImage(im,0,0,c.width,c.height);c.toBlob(b=>b?res(b):rej(),"image/jpeg",.82);URL.revokeObjectURL(im.src);};im.onerror=rej;im.src=URL.createObjectURL(file);});}
+async function imgAdmin(box){const assets=await claude.use("assets");
+  box.innerHTML=`<h3 style="font-size:18px;margin-top:18px">Bilder Zürich und Winterthur.</h3><p class="note">Offizielle Bilder der Partnerdestinationen hochladen (Querformat, min. 1200 px). Sie erscheinen auf dem Startscreen und im Resultat.</p>`;
+  if(!assets||!db){box.insertAdjacentHTML("beforeend",`<p class="note">Upload ist in dieser Ansicht nicht verfügbar.</p>`);return;}
+  [["zh","Zürich"],["wi","Winterthur"]].forEach(([k,l])=>{const row=document.createElement("div");row.className="imgrow";
+    row.innerHTML=`<b>${l}</b><div class="fld"><label for="cr-${k}">Bildnachweis</label><input id="cr-${k}" placeholder="Foto: Name / Organisation"></div><label class="up">Bild wählen<input type="file" accept="image/*" id="up-${k}" hidden></label><span class="note st"></span>`;
+    box.appendChild(row);const cr=row.querySelector("input:not([type=file])");cr.value=IMG[k].credit||"";const st=row.querySelector(".st");
+    if(IMG[k].src)st.textContent="Bild vorhanden.";
+    row.querySelector("input[type=file]").onchange=async e=>{const f=e.target.files[0];if(!f)return;st.textContent="Wird hochgeladen …";
+      try{const blob=await shrink(f);const r=await assets.upload(blob);await db.doc("settings/images").set({...((await db.doc("settings/images").get()).data()||{}),[k]:r.url,[k+"Credit"]:cr.value.trim().slice(0,80)});
+        IMG[k].src=r.url;IMG[k].credit=cr.value.trim();st.textContent="Gespeichert.";}catch(err){st.textContent="Upload fehlgeschlagen. Bitte ein JPG oder PNG wählen.";}};
+    cr.onchange=async()=>{try{const d=(await db.doc("settings/images").get()).data()||{};await db.doc("settings/images").set({...d,[k+"Credit"]:cr.value.trim().slice(0,80)});IMG[k].credit=cr.value.trim();st.textContent="Bildnachweis gespeichert.";}catch(e){st.textContent="Speichern fehlgeschlagen.";}};});}
+
+(async()=>{try{if(!window.claude||!claude.use)return;
+  const [d,user]=await Promise.all([claude.use("db"),claude.use("user")]);db=d;loadImgs();await flushQ();
+  if(db&&user&&await user.canEdit()){const b=document.createElement("button");b.className="admin-btn";b.textContent="Teilnahmen";b.onclick=openAdmin;document.body.appendChild(b);}
+}catch(e){}})();
+
+show("start");
+</script>
