@@ -174,7 +174,8 @@ const CONFIG = {
   prize: "Gewinnen Sie ein Event-Erlebnis in Ihrer Perfect-Match-Destination.",
   organizer: "Zug Tourismus, Bahnhofplatz, 6300 Zug, gemeinsam mit den Partnerdestinationen Zürich und Winterthur",
   deadline: "Ende der Messe",
-  idleSeconds: 75
+  idleSeconds: 75,
+  adminPin: "4141"  // Admin-PIN für die eigenständige Version (GitHub Pages). Vor der Messe ändern.
 };
 
 /* Bilder: Zug aus der ZT-Mediendatenbank (Moodcase). Zürich und Winterthur werden im Admin-Bereich hochgeladen
@@ -337,10 +338,12 @@ function compute(){const sc={ZH:0,WI:0,ZG:0};const add=p=>{for(const k in p)sc[k
   S.result=best[Math.floor(Math.random()*best.length)];}
 
 /* ================= Speicherung (db, mit lokalem Puffer bei Funkloch) ================= */
-let db=null;const QKEY="ppm_pending_v1";
+let db=null,LOCAL=!(window.claude&&window.claude.use);const QKEY="ppm_pending_v1",LKEY="ppm_entries_v1";
+const readL=()=>{try{return JSON.parse(localStorage.getItem(LKEY)||"[]")}catch(e){return []}};
+const writeL=a=>{try{localStorage.setItem(LKEY,JSON.stringify(a));return true}catch(e){return false}};
 const readQ=()=>{try{return JSON.parse(localStorage.getItem(QKEY)||"[]")}catch(e){return []}};
 const writeQ=q=>{try{localStorage.setItem(QKEY,JSON.stringify(q))}catch(e){}};
-async function store(entry){if(db){try{await db.collection("entries").add(entry);return;}catch(e){}}const q=readQ();q.push(entry);writeQ(q);}
+async function store(entry){if(LOCAL){const a=readL();a.push(entry);writeL(a);return;}if(db){try{await db.collection("entries").add(entry);return;}catch(e){}}const q=readQ();q.push(entry);writeQ(q);}
 async function flushQ(){if(!db)return;const q=readQ();if(!q.length)return;const left=[];
   for(const e of q){try{await db.collection("entries").add(e);}catch(err){left.push(e);}}writeQ(left);}
 
@@ -411,8 +414,31 @@ async function imgAdmin(box){const assets=await claude.use("assets");
         IMG[k].src=r.url;IMG[k].credit=cr.value.trim();st.textContent="Gespeichert.";}catch(err){st.textContent="Upload fehlgeschlagen. Bitte ein JPG oder PNG wählen.";}};
     cr.onchange=async()=>{try{const d=(await db.doc("settings/images").get()).data()||{};await db.doc("settings/images").set({...d,[k+"Credit"]:cr.value.trim().slice(0,80)});IMG[k].credit=cr.value.trim();st.textContent="Bildnachweis gespeichert.";}catch(e){st.textContent="Speichern fehlgeschlagen.";}};});}
 
+/* Eigenständige Version (z.B. GitHub Pages): Teilnahmen lokal im Browser, Admin per 5 Taps oben links + PIN */
+let taps=0,tapT=0;
+document.addEventListener("pointerdown",e=>{if(!LOCAL||e.clientX>80||e.clientY>80)return;const n=Date.now();taps=n-tapT<700?taps+1:1;tapT=n;if(taps>=5){taps=0;pinPrompt();}});
+function pinPrompt(){if(document.querySelector(".admin"))return;const ov=document.createElement("div");ov.className="admin";
+  ov.innerHTML=`<div class="box" role="dialog" aria-modal="true" aria-label="Admin"><h3>Admin.</h3><form id="pf" style="margin-top:12px"><div class="fld"><label for="pin">PIN</label><input id="pin" type="password" inputmode="numeric" autocomplete="off"></div><div class="err" id="perr"></div><div class="acts"><button class="pri" type="submit">Öffnen</button><button type="button" id="px">Abbrechen</button></div></form></div>`;
+  document.body.appendChild(ov);ov.querySelector("#pin").focus();ov.querySelector("#px").onclick=()=>ov.remove();
+  ov.querySelector("#pf").onsubmit=e=>{e.preventDefault();if(ov.querySelector("#pin").value===CONFIG.adminPin){ov.remove();localAdmin();}else ov.querySelector("#perr").textContent="PIN falsch.";};}
+const COLS=["ts","firstName","lastName","email","company","match","newsletter","eventType","likes","effect"];
+const toCSV=rows=>"\ufeff"+[COLS.join(";"),...rows.map(r=>COLS.map(c=>csvCell(r[c])).join(";"))].join("\r\n");
+function localAdmin(){const rows=readL().slice().reverse();const ov=document.createElement("div");ov.className="admin";
+  const cnt=k=>rows.filter(r=>r.match===k).length;
+  ov.innerHTML=`<div class="box" role="dialog" aria-modal="true" aria-label="Teilnahmen"><h3>Teilnahmen.</h3><p class="note">Gespeichert auf diesem Gerät. Regelmässig als CSV sichern.</p>
+  <div class="kpis"><div><b>${rows.length}</b><span>Total</span></div><div><b>${cnt("Zürich")}</b><span>Zürich</span></div><div><b>${cnt("Winterthur")}</b><span>Winterthur</span></div><div><b>${cnt("Zug")}</b><span>Zug</span></div></div>
+  <div class="note">Newsletter-Opt-in: ${rows.filter(r=>r.newsletter).length}</div>
+  <div class="tbl"><table><thead><tr><th>Zeit</th><th>Name</th><th>E-Mail</th><th>Firma</th><th>Match</th><th>NL</th></tr></thead><tbody></tbody></table></div>
+  <p class="note" id="lst"></p><div class="acts"><button class="pri" id="lcsv">CSV herunterladen</button><button id="ldel">Alle löschen</button><button id="lx">Schliessen</button></div></div>`;
+  document.body.appendChild(ov);const tb=ov.querySelector("tbody");
+  rows.slice(0,100).forEach(r=>{const tr=document.createElement("tr");[new Date(r.ts).toLocaleString("de-CH",{dateStyle:"short",timeStyle:"short"}),`${r.firstName} ${r.lastName}`,r.email,r.company||"",r.match,r.newsletter?"ja":""].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td);});tb.appendChild(tr);});
+  const st=ov.querySelector("#lst");ov.querySelector("#lx").onclick=()=>ov.remove();
+  ov.querySelector("#lcsv").onclick=()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([toCSV(readL())],{type:"text/csv"}));a.download=`perfect-match-teilnahmen-${new Date().toISOString().slice(0,10)}.csv`;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);st.textContent="CSV wird heruntergeladen.";};
+  let armed=false;ov.querySelector("#ldel").onclick=e=>{if(!armed){armed=true;e.target.textContent="Wirklich alle löschen?";st.textContent="Vorher CSV sichern. Nochmals tippen zum Löschen.";return;}writeL([]);ov.remove();};}
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist();}catch(e){}
+
 (async()=>{try{if(!window.claude||!claude.use)return;
-  const [d,user]=await Promise.all([claude.use("db"),claude.use("user")]);db=d;loadImgs();await flushQ();
+  const [d,user]=await Promise.all([claude.use("db"),claude.use("user")]);db=d;if(!db){LOCAL=true;return;}LOCAL=false;loadImgs();await flushQ();
   if(db&&user&&await user.canEdit()){const b=document.createElement("button");b.className="admin-btn";b.textContent="Teilnahmen";b.onclick=openAdmin;document.body.appendChild(b);}
 }catch(e){}})();
 
